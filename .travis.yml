@@ -17,9 +17,10 @@ install:
     - sudo service tarantool restart
     - git clone https://github.com/tarantool/tarantool-php.git
     - cd ./tarantool-php
-    - phpize 
-    - ./configure 
-    - make 
+    - phpize --clean
+    - phpize
+    - ./configure
+    - make
     - sudo make install
 
-script: php -i 
+script: php -i
