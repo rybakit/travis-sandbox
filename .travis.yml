@@ -16,7 +16,8 @@ install:
     - sudo wget https://raw.githubusercontent.com/tarantool/queue/master/init.lua -O /usr/share/tarantool/lua/init.lua
     - sudo wget https://raw.githubusercontent.com/tarantool/queue/master/tarantool.cfg -O /etc/tarantool/instances.enabled/queue.cfg
     - sudo service tarantool restart
-    - git clone https://github.com/tarantool/tarantool-php.git
+    #- git clone https://github.com/tarantool/tarantool-php.git
+    - git clone https://github.com/rybakit/tarantool-php.git
     - cd ./tarantool-php
     - phpize --clean
     - phpize
