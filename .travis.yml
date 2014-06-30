@@ -10,7 +10,10 @@ before_install:
     - php -i|grep Thread
 
 install:
-    - sudo apt-get install gearman libgearman-dev
+    - sudo apt-get install python-software-properties
+    - sudo add-apt-repository ppa:gearman-developers/ppa
+    - sudo apt-get update
+    - sudo apt-get install gearman-job-server libgearman-dev
     - pecl install gearman
 
 script: php -r '$c = new GearmanClient();$c->addServer();$c->doBackground("reverse", "Hello!");';
