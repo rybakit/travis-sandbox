@@ -11,7 +11,7 @@ before_install:
 
 install:
     - sudo apt-get install python-software-properties
-    - sudo add-apt-repository ppa:gearman-developers/ppa
+    - sudo add-apt-repository -y ppa:gearman-developers/ppa
     - sudo apt-get update
     - sudo apt-get install gearman-job-server libgearman-dev
     - pecl install gearman
