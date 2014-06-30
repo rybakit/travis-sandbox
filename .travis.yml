@@ -10,7 +10,7 @@ before_install:
     - php -i|grep Thread
 
 install:
-    - sudo apt-get install gearman-job-server 
+    - sudo apt-get install gearman
     - pecl install gearman
 
 script: php -r '$c = new GearmanClient();$c->addServer();$c->doBackground("reverse", "Hello!");';
