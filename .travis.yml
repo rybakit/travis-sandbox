@@ -13,6 +13,7 @@ before_install:
     
 install:
     - sudo apt-get install tarantool tarantool-client
+    - ls -la /usr/share
     - sudo wget https://raw.githubusercontent.com/tarantool/queue/master/init.lua -O /usr/share/tarantool-lts/lua/init.lua
     - sudo wget https://raw.githubusercontent.com/tarantool/queue/master/tarantool.cfg -O /etc/tarantool-lts/instances.enabled/queue.cfg
     - sudo service tarantool restart
