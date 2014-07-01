@@ -17,7 +17,7 @@ install:
     - sudo wget https://raw.githubusercontent.com/tarantool/queue/master/init.lua
     - sudo wget https://raw.githubusercontent.com/tarantool/queue/master/tarantool.cfg -O /etc/tarantool/instances.enabled/queue.cfg  && echo 'script_dir = '`pwd` | sudo tee -a /etc/tarantool/instances.enabled/queue.cfg
     - sudo service tarantool-lts restart
-    - dpkg -s tarantool
+    - dpkg -s tarantool-lts
     - git clone https://github.com/tarantool/tarantool-php.git
     - cd ./tarantool-php
     - phpize --clean
