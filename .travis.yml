@@ -15,7 +15,7 @@ install:
     - sudo apt-get update
     - sudo apt-get install gearman-job-server libgearman-dev
     - pecl install gearman
-    - sudo service gearman restart
+    - sudo service gearmand restart
 
 #script: (nohup php worker.php >> worker.log 2>&1 &) && (nohup php worker.php >> worker.log 2>&1 &) && (php client.php) && tail -f worker.log
 script: php client.php
