@@ -2,6 +2,7 @@
 
 $client = new GearmanClient();
 $result = $client->addServer();
+$client->setTimeout(30);
 
 var_dump($result);
 
