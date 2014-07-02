@@ -17,5 +17,4 @@ install:
     - pecl install gearman
     - sudo service gearman-job-server restart
 
-#script: (nohup php worker.php >> worker.log 2>&1 &) && (nohup php worker.php >> worker.log 2>&1 &) && (php client.php) && tail -f worker.log
-script: php client.php
+script: (nohup php worker.php >> worker.log 2>&1 &) && (nohup php worker.php >> worker.log 2>&1 &) && (php client.php) && tail -f worker.log
