@@ -24,4 +24,4 @@ before_script:
     
 script:
     - php client.php
-    - less worker.log
+    - cat worker.log
