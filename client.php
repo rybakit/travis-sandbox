@@ -1,7 +1,7 @@
 <?php
 
 $client = new GearmanClient();
-$result = $client->addServer();
+$result = $client->addServer('127.0.0.1');
 $client->setTimeout(30);
 
 var_dump($result);
