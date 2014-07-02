@@ -5,4 +5,9 @@ $result = $client->addServer();
 
 var_dump($result);
 
-$client->doBackground('pop', 'Hello!');
+$h = $client->doBackground('pop', 'Hello!');
+
+if ($client->returnCode() != GEARMAN_SUCCESS) {
+  echo "bad return code\n";
+  exit;
+}
