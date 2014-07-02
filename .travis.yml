@@ -9,7 +9,7 @@ before_install:
     - uname -a
 
 install:
-    - > bash -c 'if [[ $TRAVIS_PHP_VERSION != hhvm* ]]; then echo 1 && 
+    - > bash -c 'if [[ $TRAVIS_PHP_VERSION != hhvm* ]]; then echo 1 && \
         echo 2; fi;'
 
 script: php -v
