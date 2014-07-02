@@ -2,4 +2,4 @@
 
 $client = new GearmanClient();
 $client->addServer();
-$client->do('pop', 'Hello!');
+$client->doNormal('pop', 'Hello!');
