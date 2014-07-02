@@ -18,4 +18,10 @@ install:
     - sudo service gearman-job-server restart
 
 #script: (nohup php worker.php >> worker.log 2>&1 &) && (nohup php worker.php >> worker.log 2>&1 &) && (php client.php) && (less worker.log)
-script: nohup php worker.php >> worker.log 2>&1 &
+before_script:
+    - nohup php worker.php >> worker.log 2>&1 &
+    - nohup php worker.php >> worker.log 2>&1 &
+    
+script:
+    - php client.php
+    - less worker.log
