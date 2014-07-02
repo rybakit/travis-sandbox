@@ -19,8 +19,10 @@ install:
 
 #script: (nohup php worker.php >> worker.log 2>&1 &) && (nohup php worker.php >> worker.log 2>&1 &) && (php client.php) && (less worker.log)
 before_script:
-    - nohup php worker.php >> worker.log 2>&1 &
-    - nohup php worker.php >> worker.log 2>&1 &
+    #- nohup php worker.php >> worker.log 2>&1 &
+    #- nohup php worker.php >> worker.log 2>&1 &
+    - php worker.php >> worker.log 2>&1 &
+    - php worker.php >> worker.log 2>&1 &
     
 script:
     - php client.php
