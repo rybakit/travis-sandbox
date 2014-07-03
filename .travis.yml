@@ -18,4 +18,5 @@ install:
         echo 2; 
         fi;'
 
-script: php -v
+script:
+    - mysql --version
