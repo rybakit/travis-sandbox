@@ -7,4 +7,4 @@ before_install:
     - uname -a
 
 script:
-    - phpunit -v
+    - phpunit --version
