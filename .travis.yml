@@ -12,17 +12,17 @@ before_install:
         sudo add-apt-repository -y ppa:mapnik/boost;
         sudo apt-get update;
         
+        sudo apt-get install -y gcc-4.8 g++-4.8 hhvm-dev;
+
         sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.8;
         sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 40 --slave /usr/bin/g++ g++ /usr/bin/g++-4.6;
         sudo update-alternatives --set gcc /usr/bin/gcc-4.8;
         
         sudo apt-get install libboost1.49-dev libboost-regex1.49-dev libboost-system1.49-dev libboost-program-options1.49-dev libboost-filesystem1.49-dev libboost-thread1.49-dev;
-        
-        sudo apt-get install -y gcc-4.8 g++-4.8 hhvm-dev;
         fi;'
         
 install:
-    - uname -a
+    - lsb_release -a
 
     # hhvm-pgsql
     - >
