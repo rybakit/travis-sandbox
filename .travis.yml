@@ -13,7 +13,7 @@ install:
     - git clone https://github.com/tarantool/tarantool-php.git
     - cd tarantool-php
     - phpize && ./configure
-    - make;
+    - make
     - sudo make install
     - cd ..
     - printf "extension = tarantool.so\n" >> ~/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/php.ini
