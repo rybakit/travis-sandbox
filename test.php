@@ -1,6 +1,6 @@
 <?php
 
-c = new Tarantool('localhost', 3301);
+$c = new Tarantool('localhost', 3301);
 
 var_dump($c->connect());
 var_dump($c->connect());
