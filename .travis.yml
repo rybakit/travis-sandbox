@@ -1,20 +1,38 @@
 language: php
 
 php:
-    - 5.5
+    - 5.6
+
 
 before_install:
-    - uname -a
+    - curl http://tarantool.org/dist/public.key | sudo apt-key add -
+    - echo "deb http://tarantool.org/dist/master/ubuntu `lsb_release -c -s` main" | sudo tee -a /etc/apt/sources.list.d/tarantool.list
+    - sudo apt-get update
 
-install: 
+install:
+    - sudo apt-get -y install tarantool
+
     - >
-        bash -c 'if [[ $TRAVIS_PHP_VERSION != hhvm* ]]; then echo 1 && 
-        echo 2; fi;'
-    - >
-        bash -c 'if [[ $TRAVIS_PHP_VERSION != hhvm* ]]; then 
-        echo 4; 
-        echo 2; 
+        bash -c 'if [[ $TARANTOOL_CLIENT == pecl ]]; then
+            git clone https://github.com/tarantool/tarantool-php.git;
+            cd tarantool-php;
+            phpize && ./configure;
+            make;
+            sudo make install;
+            cd ..;
+            printf "extension = tarantool.so\n" >> ~/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/php.ini;
         fi;'
 
+before_script:
+    - sudo cp box.lua /etc/tarantool/instances.enabled
+    - sudo tarantoolctl start box
+    - >
+        for i in `seq 1 10`; do
+            if sudo tarantoolctl status box; then
+                break;
+            fi;
+            sleep 1;
+        done
+        
 script:
-    - mysql --version
+    - php test.php
