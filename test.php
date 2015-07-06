@@ -1,5 +1,25 @@
 <?php
 
-$t = new Tarantool('127.0.0.1', '3301');
-var_dump($t->connect());
-var_dump($t->ping());
+class Test extends \PHPUnit_Framework_TestCase
+{
+    /**
+     * @var \Tarantool
+     */
+    private static $client;
+
+    public static function setUpBeforeClass()
+    {
+        self::$client = new \Tarantool(getenv('TNT_HOST'), getenv('TNT_PORT'));
+    }
+
+    public static function tearDownAfterClass()
+    {
+        self::$client->disconnect();
+        self::$client = null;
+    }
+    
+    public function testPing()
+    {
+        var_dump(self::$client->ping());
+    }
+}
