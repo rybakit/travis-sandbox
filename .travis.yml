@@ -30,4 +30,4 @@ before_script:
         done
         
 script:
-    - php test.php
+    - phpunit test.php
