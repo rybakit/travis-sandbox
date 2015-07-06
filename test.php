@@ -1,4 +1,4 @@
 <?php
 
-$result = (new Tarantool())->authenticate('guest', 'incorrect_password');
-var_dump($result);
+$t = new Tarantool();
+var_dump($t-connect());
