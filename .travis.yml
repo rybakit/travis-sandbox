@@ -1,10 +1,12 @@
 language: php
 
 php:
-    - hhvm-nightly
+    - hhvm
 
 install:
     - lsb_release -a
+    - echo $TRAVIS_PHP_VERSION
+    - bash -c 'echo $TRAVIS_PHP_VERSION'
 
     # hhvm-pgsql
     - >
