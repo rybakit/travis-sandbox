@@ -15,7 +15,5 @@ local function create_space(name)
     return box.schema.space.create(name, {temporary = true})
 end
 
-space = create_space('space_foobar')
-space:create_index('primary', {type = 'hash', parts = {1, 'num'}})
-space:insert{1, 'foo'}
-space:insert{2, 'bar'}
+local space = create_space('space_conn')
+space:create_index('primary', {type = 'tree', parts = {1, 'num'}})
