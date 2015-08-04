@@ -17,31 +17,9 @@ class Test extends \PHPUnit_Framework_TestCase
         self::$client->disconnect();
         self::$client = null;
     }
-    
-    protected function setUp()
-    {
-        $name = preg_replace('/^test([^\s]+).*$/', '\1', $this->getName());
-        $name = strtolower($name);
 
-        $tubeType = $this->getTubeType();
-        $tubeName = sprintf('t_%s_%s', $tubeType, $name);
-        
-        var_dump($tubeType);
-        var_dump($tubeName);
-    }
-
-    protected function tearDown()
+    public function testFoo()
     {
-        $this->queue = null;
-    }
-
-    public function testEval($data)
-    {
-        self::$client->evaluate('return 42');
-    }
-    
-    public function testPing()
-    {
-        var_dump(self::$client->ping());
+        self::$client->delete('space_conn', [1]);
     }
 }
