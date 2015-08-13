@@ -8,7 +8,6 @@ install:
     - composer global require sebastian/resource-operations:1.0.*@dev
     - composer global require phpunit/phpunit:5.0.*@dev
     - export PATH="~/.composer/vendor/bin:$PATH"
-    - composer install
 
 script:
     - phpunit test.php
