@@ -14,4 +14,4 @@ install:
     - printf "extension = msgpack.so\n" >> ~/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/php.ini
 
 script:
-    - test.php
+    - php test.php
