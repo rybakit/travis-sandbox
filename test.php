@@ -2,12 +2,12 @@
 
 namespace Foo;
 
-$unpacker = new \MessagePackUnpacker();
-$unpacker->setOption(\MessagePack::OPT_PHPONLY, false);
+$packer = new \MessagePack();
+$packer->setOption(\MessagePack::OPT_PHPONLY, false);
 
-$data = hex2bin('81a16102');
+$data = hex2bin('82c0a8737464436c617373a3666f6fa3626172');
 
-$data = msgpack_unpack($data);
-//$data = $unpacker->unpack($data);
+//$data = msgpack_unpack($data);
+$data = $packer->unpack($data);
 
 var_dump($data);
