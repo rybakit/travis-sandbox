@@ -4,10 +4,14 @@ php:
     - 7.0
 
 install:
-    - composer global require phpunit/phpunit-mock-objects:3.0.*@dev
-    - composer global require sebastian/resource-operations:1.0.*@dev
-    - composer global require phpunit/phpunit:5.0.*@dev
-    - export PATH="~/.composer/vendor/bin:$PATH"
+    - git clone https://github.com/msgpack/msgpack-php.git
+    - cd msgpack-php
+    - git checkout php7
+    - phpize && ./configure
+    - make
+    - sudo make install
+    - cd ..
+    - printf "extension = msgpack.so\n" >> ~/.phpenv/versions/$TRAVIS_PHP_VERSION/etc/php.ini
 
 script:
-    - phpunit test.php
+    - test.php
