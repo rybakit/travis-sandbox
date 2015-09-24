@@ -32,7 +32,7 @@ before_script:
 script:
   #- docker run -it --rm --name my-php-script -v $(pwd):/app -w /app php:"$PHP_VERSION-cli" php test.php
   - docker run -it -d --name tests -v $(pwd):/app -w /app php:"$PHP_VERSION-cli" php
-  - docker exec tarantool script /dev/null -c 'curl -sS https://getcomposer.org/installer | php'
-  - docker exec tarantool script /dev/null -c 'php composer.phar require phpunit/phpunit'
-  - docker exec tarantool script /dev/null -c 'php composer.phar install'
+  - docker exec tarantool script /dev/null -c 'curl -sS https://getcomposer.org/installer | "$PHP_VERSION-cli"'
+  - docker exec tarantool script /dev/null -c '"$PHP_VERSION-cli" composer.phar require phpunit/phpunit'
+  - docker exec tarantool script /dev/null -c '"$PHP_VERSION-cli" composer.phar install'
   - docker exec tarantool script /dev/null -c 'vendor/bin/phpunit'
