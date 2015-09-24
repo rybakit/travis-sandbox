@@ -1,5 +1,6 @@
 <?php
 
+/*
 class Test extends \PHPUnit_Framework_TestCase
 {
     public function testFoo()
@@ -7,3 +8,6 @@ class Test extends \PHPUnit_Framework_TestCase
         $this->assertSame('foo', 'foo');
     }
 }
+*/
+
+var_dump(phpversion());
