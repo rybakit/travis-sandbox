@@ -12,6 +12,7 @@ env:
   - PHP_VERSION=7.0
 
 before_install:
+  - docker --version
   - docker pull tarantool/tarantool
   - docker pull php
 #  - composer require phpunit/phpunit
