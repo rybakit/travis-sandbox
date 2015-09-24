@@ -1,5 +1,7 @@
 sudo: required
 
+language: bash
+
 services:
   - docker
 
@@ -18,7 +20,7 @@ before_install:
 #  - composer install
 
 before_script:
-  - docker run -it -d -P --name tarantool -v $(pwd):/app tarantool/tarantool
+  - docker run -it -d -p 127.0.0.1 --name tarantool -v $(pwd):/app tarantool/tarantool
   - docker exec tarantool script /dev/null -c 'sudo cp /app/instance.lua /etc/tarantool/instances.enabled'
   - docker exec tarantool script /dev/null -c 'sudo tarantoolctl start instance'
   - docker exec tarantool script /dev/null -c 'for i in `seq 1 10`; do if sudo tarantoolctl status instance; then break; fi; sleep 1; done'
