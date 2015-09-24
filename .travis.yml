@@ -30,4 +30,9 @@ before_script:
   - docker exec tarantool script /dev/null -c 'for i in `seq 1 10`; do if sudo tarantoolctl status instance; then break; fi; sleep 1; done'
 
 script:
-  - docker run -it --rm --name my-php-script -v $(pwd):/app -w /app php:"$PHP_VERSION-cli" php test.php
+  #- docker run -it --rm --name my-php-script -v $(pwd):/app -w /app php:"$PHP_VERSION-cli" php test.php
+  - docker run -it -d --name tests -v $(pwd):/app -w /app php:"$PHP_VERSION-cli" php
+  - docker exec tarantool script /dev/null -c 'curl -sS https://getcomposer.org/installer | php'
+  - docker exec tarantool script /dev/null -c 'composer require phpunit/phpunit'
+  - docker exec tarantool script /dev/null -c 'composer install'
+  - docker exec tarantool script /dev/null -c 'vendor/bin/phpunit'
