@@ -32,7 +32,8 @@ before_script:
 script:
   #- docker run -it --rm --name my-php-script -v $(pwd):/app -w /app php:"$PHP_VERSION-cli" php test.php
   - docker run -it -d --name tests -v $(pwd):/app -w /app php:"$PHP_VERSION-cli" php
-  - docker exec tests script /dev/null -c 'php -r "readfile(\"https://getcomposer.org/installer\");" | php'
-  - docker exec tests script /dev/null -c 'php composer.phar require phpunit/phpunit'
-  - docker exec tests script /dev/null -c 'php composer.phar install'
+  - docker exec tests script /dev/null -c 'apt-get install curl'
+  - docker exec tests script /dev/null -c 'curl -sS https://getcomposer.org/installer | php -- --filename=composer'
+  - docker exec tests script /dev/null -c 'php composer require phpunit/phpunit'
+  - docker exec tests script /dev/null -c 'php composer install'
   - docker exec tests script /dev/null -c 'vendor/bin/phpunit'
