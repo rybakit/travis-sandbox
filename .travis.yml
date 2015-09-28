@@ -13,7 +13,7 @@ env:
 
 before_install:
   - docker --version
-  - sudo apt-get upgrade docker-engine
+  - sudo bash -c 'curl -sSL https://get.docker.com/ | sh'
   - docker pull tarantool/tarantool
   - docker pull php
 #  - composer require phpunit/phpunit
