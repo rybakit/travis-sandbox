@@ -13,6 +13,7 @@ env:
 
 before_install:
   - docker --version
+  - apt-get upgrade docker-engine
   - docker pull tarantool/tarantool
   - docker pull php
 #  - composer require phpunit/phpunit
