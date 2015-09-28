@@ -13,7 +13,8 @@ env:
 
 before_install:
   - docker --version
-  - sudo bash -c 'curl -sSL https://get.docker.com/ | sh'
+  - sudo sh -c 'curl -sSL https://get.docker.com/ | sh'
+  - docker --version
   - docker pull tarantool/tarantool
   - docker pull php
 #  - composer require phpunit/phpunit
