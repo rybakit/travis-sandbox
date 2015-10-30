@@ -3,9 +3,7 @@ sudo: required
 language: bash
 
 script:
-  - bash -c "
-      if [[ -f coverage.clover ]]; then
-        curl -sSOL https://scrutinizer-ci.com/ocular.phar &&
-        php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+  - bash -c "if [[ -f coverage.clover ]]; then
+        echo foo
       fi
     "
