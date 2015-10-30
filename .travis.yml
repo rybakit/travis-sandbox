@@ -3,7 +3,7 @@ sudo: required
 language: bash
 
 script:
-  - bash -c " \
+  - bash -c "
       if [[ -f coverage.clover ]]; then
         echo foo
       fi
