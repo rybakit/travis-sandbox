@@ -5,6 +5,7 @@ language: bash
 script:
   - bash -c "
       if [[ -f coverage.clover ]]; then
-        echo foo
+        echo foo && 
+        echo bar;
       fi
     "
