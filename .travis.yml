@@ -12,6 +12,7 @@ install:
     - sudo apt-get -y install tarantool
     - git clone https://github.com/tarantool/tarantool-php.git
     - cd tarantool-php
+    - git checkout 51dcd77d5911c4cbb9ffa54f4b5c022c9f73537e
     - phpize && ./configure
     - make
     - sudo make install
