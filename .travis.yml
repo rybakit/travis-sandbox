@@ -1,29 +1,22 @@
-language: php
+language: bash
 
-php:
-    - 5.4
-    - 5.5
-    - 5.6
-    
 before_install:
-    - uname -a
-    - lsb_release -a
-    - php -i|grep Thread
-    - wget http://tarantool.org/dist/public.key && sudo apt-key add ./public.key && release=`lsb_release -c -s` && echo "deb http://tarantool.org/dist/stable/ubuntu/ $release main" | sudo tee -a /etc/apt/sources.list.d/tarantool.list && echo "deb-src http://tarantool.org/dist/stable/ubuntu/ $release main" | sudo tee -a /etc/apt/sources.list.d/tarantool.list
+    - curl http://tarantool.org/dist/public.key | sudo apt-key add -
+    - echo "deb http://tarantool.org/dist/1.6/ubuntu `lsb_release -c -s` main" | sudo tee -a /etc/apt/sources.list.d/tarantool.list
     - sudo apt-get update
-    
-install:
-    - sudo apt-get install tarantool-lts tarantool-lts-client
-    - sudo wget https://raw.githubusercontent.com/tarantool/queue/master/init.lua
-    - sudo wget https://raw.githubusercontent.com/tarantool/queue/master/tarantool.cfg -O /etc/tarantool/instances.enabled/queue.cfg  && echo 'script_dir = '`pwd` | sudo tee -a /etc/tarantool/instances.enabled/queue.cfg
-    - sudo service tarantool-lts restart
-    - dpkg -s tarantool-lts
-    - git clone https://github.com/tarantool/tarantool-php.git
-    - cd ./tarantool-php
-    - phpize --clean
-    - phpize
-    - ./configure
-    - make
-    - sudo make install
 
-script: php -i
+install:
+    - sudo apt-get -y install tarantool
+
+before_script:
+    - sudo cp ./instance.lua /etc/tarantool/instances.enabled
+    - sudo tarantoolctl start instance
+    - >
+        for i in `seq 1 20`; do
+            if sudo tarantoolctl status instance; then
+                break;
+            fi;
+            sleep 1;
+        done
+
+script: ps aux | grep taran
