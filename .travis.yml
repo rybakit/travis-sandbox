@@ -22,4 +22,4 @@ before_script:
 script: 
     - ps aux | grep taran
     - tarantool --version
-    - strace -f sudo tarantoolctl start instance
+    - sudo bash -c 'strace -f tarantoolctl start instance'
