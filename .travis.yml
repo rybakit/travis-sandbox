@@ -19,4 +19,6 @@ before_script:
             sleep 1;
         done
 
-script: ps aux | grep taran
+script: 
+    - ps aux | grep taran
+    - tarantool --version
