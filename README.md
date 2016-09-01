@@ -1,36 +1,3 @@
-# msgpack.php
-
-## Tests
-
-Run tests as follows:
-
-```sh
-$ phpunit
-```
-
-Also, if you already have Docker installed, you can run the tests in a docker container.
-First, create a container:
-
-```sh
-$ ./dockerfile.sh | docker build -t msgpack -
-```
-
-The command above will create a container named `msgpack` with PHP 5.6 runtime.
-You may change the default runtime by defining the `PHP_RUNTIME` environment variable:
-
-```sh
-$ PHP_RUNTIME='php:7.0-cli' ./dockerfile.sh | docker build -t msgpack -
-```
-
-> See a list of various runtimes [here](.travis.yml#L9-L15).
-
-Then run the unit tests:
-
-```sh
-$ docker run --rm --name msgpack -v $(pwd):/msgpack -w /msgpack msgpack
-```
-
-
 #### Performance
 
 To check the performance run:
@@ -152,9 +119,10 @@ $ php tests/bench.php
 
 Another example, benchmarking both the library and [msgpack pecl extension](https://pecl.php.net/package/msgpack):
 
-```
+```sh
 $ MP_BENCH_TARGETS=pure_p,pure_u,pecl_p,pecl_u php tests/bench.php
-
+```
+```
 Filter: MessagePack\Tests\Perf\Filter\ListFilter
 Rounds: 3
 Iterations: 100000
